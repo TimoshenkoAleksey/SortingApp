@@ -3,6 +3,8 @@ package ru.aston.team.one.sortingapp.model;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
+import java.util.Comparator;
+
 @JsonDeserialize(builder = Student.Builder.class)
 public record Student(int groupNumber, double averageNumber, int recordBookNumber) implements Comparable<Student> {
 
@@ -24,13 +26,14 @@ public record Student(int groupNumber, double averageNumber, int recordBookNumbe
         }
     }
 
+    private static final Comparator<Student> NATURAL_ORDER = Comparator
+            .comparingInt(Student::groupNumber)
+            .thenComparingDouble(Student::averageNumber)
+            .thenComparingInt(Student::recordBookNumber);
+
     @Override
     public int compareTo(Student other) {
-        return Integer.compare(recordBookNumber, other.recordBookNumber);
-    }
-
-    public static Builder builder() {
-        return new Builder();
+        return NATURAL_ORDER.compare(this, other);
     }
 
     @JsonPOJOBuilder(withPrefix = "", buildMethodName = "build")
