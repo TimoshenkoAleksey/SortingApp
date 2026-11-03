@@ -1,0 +1,17 @@
+[
+  {"groupNumber": 1, "averageNumber": 4.5, "recordBookNumber": 1001},
+  {"groupNumber": 2, "averageNumber": 3.8, "recordBookNumber": 1002},
+  {"groupNumber": 1, "averageNumber": 4.9, "recordBookNumber": 1003},
+  {"groupNumber": 3, "averageNumber": 4.1, "recordBookNumber": 1004},
+  {"groupNumber": 2, "averageNumber": 3.2, "recordBookNumber": 1005},
+  {"groupNumber": 1, "averageNumber": 4.5, "recordBookNumber": 1001},
+  {"groupNumber": 4, "averageNumber": 4.7, "recordBookNumber": 1006},
+  {"groupNumber": 3, "averageNumber": 3.9, "recordBookNumber": 1007},
+  {"groupNumber": 2, "averageNumber": 4.3, "recordBookNumber": 1008},
+  {"groupNumber": 4, "averageNumber": 2.8, "recordBookNumber": 1009},
+  {"groupNumber": 3, "averageNumber": 3.9, "recordBookNumber": 1007},
+  {"groupNumber": 1, "averageNumber": 5.0, "recordBookNumber": 1010},
+  {"groupNumber": 4, "averageNumber": 3.5, "recordBookNumber": 1011},
+  {"groupNumber": 1, "averageNumber": 4.5, "recordBookNumber": 1001},
+  {"groupNumber": 2, "averageNumber": 4.0, "recordBookNumber": 1012}
+]
