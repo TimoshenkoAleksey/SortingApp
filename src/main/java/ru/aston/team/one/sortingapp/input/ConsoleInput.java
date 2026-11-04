@@ -21,6 +21,9 @@ public class ConsoleInput {
         while (true) {
             System.out.print(prompt);
             try {
+                if(!scanner.hasNextLine()) {
+                    throw new IllegalStateException("Ввод завершён (EOF)");
+                }
                 String input = scanner.nextLine();
                 double value = Double.parseDouble(input.trim());
                 if (Double.isNaN(value) || Double.isInfinite(value)) {
