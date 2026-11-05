@@ -1,40 +1,35 @@
 package ru.aston.team.one.sortingapp.repository;
 
-
-
 import ru.aston.team.one.sortingapp.model.Student;
+
+import ru.aston.team.one.sortingapp.collection.CustomList;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Repository {
 
-    private List<Student> collection;
+    private CustomList<Student> collection;
 
     public Repository() {
-        this.collection = new ArrayList<>();
+        this.collection = new CustomList<>();
     }
 
 
-    public List<Student> getCollection() {
-        return new ArrayList<>(this.collection);
+    public CustomList<Student> getCollection() {
+        return new CustomList<>(this.collection);
     }
 
-
-    public void setCollection(List<Student> collection) {
+    public void setCollection(CustomList<Student> collection) {
         this.collection = collection;
     }
 
-
     public void addAll(List<Student> students) {
-        students.forEach(this.collection::add);
+        if (students == null) {
+            throw new IllegalArgumentException("Список студентов не может быть null");
+        }
+        students.stream().forEach(this.collection::add);
     }
-
-
-    public void add(Student student) {
-        this.collection.add(student);
-    }
-
 
     public int size() {
         return this.collection.size();
