@@ -51,20 +51,20 @@ public class Menu {
     }
 
     private void handleChoice(int choice) {
-            switch (choice) {
-                case 1 -> service.inputCollection(SourceType.MANUAL);
-                case 2 -> service.inputCollection(SourceType.RANDOM);
-                case 3 -> service.inputCollection(SourceType.FILE);
-                case 4 -> service.printCollection();
-                case 5 -> service.sortCollection(Field.GROUP_NUMBER);
-                case 6 -> service.sortCollection(Field.AVERAGE_SCORE);
-                case 7 -> service.sortCollection(Field.RECORD_BOOK_NUMBER);
-                case 8 -> service.sortCollection(Field.EVEN_RECORD_BOOK_NUMBER);
-                case 9 -> service.saveToFile();
-                case 10 -> service.countOccurrences();
-                case 0 -> exit();
-                default -> System.out.println("Неверный пункт меню.");
-            }
+        switch (choice) {
+            case 1 -> service.inputCollection(SourceType.MANUAL);
+            case 2 -> service.inputCollection(SourceType.RANDOM);
+            case 3 -> service.inputCollection(SourceType.FILE);
+            case 4 -> service.printCollection();
+            case 5 -> service.sortCollection(Field.GROUP_NUMBER);
+            case 6 -> service.sortCollection(Field.AVERAGE_SCORE);
+            case 7 -> service.sortCollection(Field.RECORD_BOOK_NUMBER);
+            case 8 -> service.sortCollection(Field.EVEN_RECORD_BOOK_NUMBER);
+            case 9 -> service.saveToFile();
+            case 10 -> service.countOccurrences();
+            case 0 -> exit();
+            default -> System.out.println("Неверный пункт меню.");
+        }
     }
 
     private void exit() {
