@@ -31,7 +31,7 @@ class EvenRecordBookNumberSortTest {
 
         assertEquals(6, sortedList.size(), "Размер списка не должен меняться");
 
-        // Проверяем, что нечетные элементы остались теми же самыми объектами на своих местах
+
         assertSame(odd5, sortedList.get(0), "Нечетный 5 сдвинулся");
         assertEquals(2, sortedList.get(1).recordBookNumber(), "Четные не отсортированы");
         assertSame(odd3, sortedList.get(2), "Нечетный 3 сдвинулся");
