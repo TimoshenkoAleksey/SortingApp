@@ -22,9 +22,14 @@ public class Menu {
         System.out.println("Добро пожаловать в SortingApp");
         isRunning = true;
         while (isRunning) {
-            printMenu();
-            int choice = input.readInt("Выберите пункт меню");
-            handleChoice(choice);
+            try {
+                printMenu();
+                int choice = input.readInt("Выберите пункт меню");
+                handleChoice(choice);
+            } catch (RuntimeException e) {
+                System.out.println("Ошибка: " + e.getMessage());
+                exit();
+            }
         }
     }
 
@@ -46,7 +51,6 @@ public class Menu {
     }
 
     private void handleChoice(int choice) {
-        try {
             switch (choice) {
                 case 1 -> service.inputCollection(SourceType.MANUAL);
                 case 2 -> service.inputCollection(SourceType.RANDOM);
@@ -57,13 +61,10 @@ public class Menu {
                 case 7 -> service.sortCollection(Field.RECORD_BOOK_NUMBER);
                 case 8 -> service.sortCollection(Field.EVEN_RECORD_BOOK_NUMBER);
                 case 9 -> service.saveToFile();
-                case 10 -> System.out.println("Количество вхождений: " + service.countOccurrences());
+                case 10 -> service.countOccurrences();
                 case 0 -> exit();
                 default -> System.out.println("Неверный пункт меню.");
             }
-        } catch (IllegalStateException e) {
-            System.out.println("Ошибка: " + e.getMessage());
-        }
     }
 
     private void exit() {
