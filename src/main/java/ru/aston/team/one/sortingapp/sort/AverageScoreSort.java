@@ -13,18 +13,14 @@ public class AverageScoreSort implements Sort {
 
     @Override
     public CustomList<Student> sort(CustomList<Student> list) {
-        Objects.requireNonNull(list, "Список не должен быть пустым ");
+        Objects.requireNonNull(list, "list must not be null");
 
-        CustomList<Student> result = new CustomList<>();
-        for (Student student : list) {
-            result.add(student);
-        }
-
-        insertionsort(result);
+        CustomList<Student> result = new CustomList<>(list);
+        insertionSort(result);
         return result;
     }
 
-    private void insertionsort(CustomList<Student> list) {
+    private void insertionSort(CustomList<Student> list) {
         for (int i = 1; i < list.size(); i++) {
             Student current = list.get(i);
             int j = i - 1;
