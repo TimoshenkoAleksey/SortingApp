@@ -12,19 +12,21 @@ public class RecordBookNumberSort implements Sort {
 
     @Override
     public CustomList<Student> sort(CustomList<Student> list) {
-        Objects.requireNonNull(list, "List must not be null");
+        Objects.requireNonNull(list, "Список не может быть null");
         CustomList<Student> result = new CustomList<>(list);
-        BookNumberSort(result);
+        bookNumberSort(result);
         return result;
     }
 
-    private void BookNumberSort(CustomList<Student> list) {
-        for (int current = 1; current < list.size(); current++) {
-            Student thisStudent = list.get(current);
-            for (int comparing = current - 1; comparing >= 0 && comparator.compare(list.get(comparing), thisStudent) > 0; comparing--) {
-                list.set(comparing + 1, list.get(comparing));
-                list.set(comparing, thisStudent);
+    private void bookNumberSort(CustomList<Student> list) {
+        for (int i = 1; i < list.size(); i++) {
+            Student current = list.get(i);
+            int j = i - 1;
+            while (j >= 0 && comparator.compare(list.get(j), current) > 0) {
+                list.set(j + 1, list.get(j));
+                j--;
             }
+            list.set(j + 1, current);
         }
     }
 }
