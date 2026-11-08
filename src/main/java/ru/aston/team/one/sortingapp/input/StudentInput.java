@@ -14,11 +14,11 @@ public class StudentInput {
     public Student readStudent() {
         while (true) {
             int groupNumber = input.readInt("Введите номер группы: ");
-            double averageScoreNumber = input.readInt("Введите средний балл: ");
+            double averageNumber = input.readDouble("Введите средний балл: ");
             int recordBookNumber = input.readInt("Введите номер зачетной книжки: ");
             try {
                 return new Student.Builder().groupNumber(groupNumber)
-                        .averageNumber(averageScoreNumber).recordBookNumber(recordBookNumber).build();
+                        .averageNumber(averageNumber).recordBookNumber(recordBookNumber).build();
             } catch (IllegalArgumentException e) {
                 System.out.println("Ошибка: " + e.getMessage() + ". Повторите ввод.");
             }
