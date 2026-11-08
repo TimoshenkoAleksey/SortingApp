@@ -18,7 +18,7 @@ public class StudentTest {
 
     @Test
     @DisplayName("Номер группы должен быть больше 0")
-    void build_shouldThrowExceptiron_whenGroupNumberIsNotPositive() {
+    void build_shouldThrowException_whenGroupNumberIsNotPositive() {
         assertThrows(IllegalArgumentException.class, () -> new Student.Builder()
                 .groupNumber(0).averageNumber(4.3).recordBookNumber(5252).build());
     }
@@ -32,7 +32,7 @@ public class StudentTest {
 
     @Test
     @DisplayName("Средний балл не может быть больше 5.0")
-    void build_shouldThrowException_whenAverageNumberIsGreaterThenMax() {
+    void build_shouldThrowException_whenAverageNumberIsGreaterThanMax() {
         assertThrows(IllegalArgumentException.class, () -> new Student.Builder()
                 .groupNumber(7).averageNumber(5.2).recordBookNumber(6767).build());
     }
