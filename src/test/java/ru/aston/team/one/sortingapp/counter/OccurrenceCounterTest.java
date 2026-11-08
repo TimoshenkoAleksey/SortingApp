@@ -37,8 +37,6 @@ class OccurrenceCounterTest {
 
     @Test
     void count_whenTargetExists_shouldReturnCorrectCount() {
-        // Создаем копию target (другой экземпляр с теми же значениями),
-        // чтобы проверить, что подсчет идет через .equals(), а не через ==
         Student targetCopy = new Student.Builder()
                 .groupNumber(1)
                 .averageNumber(4.5)
@@ -48,7 +46,7 @@ class OccurrenceCounterTest {
         List<Student> students = new ArrayList<>(List.of(target, otherStudent, targetCopy, target));
 
         int result = counter.count(students, target);
-        assertEquals(3, result, "Должно быть найдено 3 вхождения (включая копию по equals)");
+        assertEquals(3, result, "Должно быть найдено 3 вхождения");
     }
 
     @Test
@@ -87,7 +85,6 @@ class OccurrenceCounterTest {
 
     @Test
     void count_whenCalledConcurrently_shouldBeConsistent() throws Exception {
-        // Тест на Race Conditions (состояние гонки)
         List<Student> students = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             students.add(i % 2 == 0 ? target : otherStudent);
@@ -109,7 +106,6 @@ class OccurrenceCounterTest {
                 }));
             }
 
-            // В списке 100 элементов, из них 50 - это target. Ожидаем 50.
             for (Future<Integer> f : results) {
                 assertEquals(50, f.get(5, TimeUnit.SECONDS), "Многопоточный подсчет дал сбой");
             }
