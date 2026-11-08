@@ -68,7 +68,6 @@ class CustomListTest {
 
     @Test
     void testListExpandsBeyondDefaultCapacity() {
-        // Добавляем 15 элементов (больше дефолтной вместимости 10)
         for (int i = 1; i <= 15; i++) {
             customList.add(new Student(1, 4.5, 1000 + i));
         }
@@ -77,7 +76,6 @@ class CustomListTest {
         assertEquals(1001, customList.get(0).recordBookNumber());
         assertEquals(1015, customList.get(14).recordBookNumber());
 
-        // Добавляем ещё 10 элементов (всего 25)
         for (int i = 16; i <= 25; i++) {
             customList.add(new Student(2, 4.0, 1000 + i));
         }
