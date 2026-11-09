@@ -1,5 +1,6 @@
 package ru.aston.team.one.sortingapp.service;
 
+import ru.aston.team.one.sortingapp.collection.CustomList;
 import ru.aston.team.one.sortingapp.counter.OccurrenceCounter;
 import ru.aston.team.one.sortingapp.enums.Field;
 import ru.aston.team.one.sortingapp.enums.SourceType;
@@ -11,6 +12,7 @@ import ru.aston.team.one.sortingapp.repository.Repository;
 import ru.aston.team.one.sortingapp.saver.Saver;
 import ru.aston.team.one.sortingapp.sort.Sort;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -31,14 +33,13 @@ public class Service {
                    OccurrenceCounter occurrenceCounter,
                    StudentInput studentInput,
                    Saver saver) {
-        this.repository = Objects.requireNonNull(repository, "repository не должен быть null");
-        this.providers = Objects.requireNonNull(providers, "providers не должен быть null");
-        this.sorts = Objects.requireNonNull(sorts, "sorts не должен быть null");
-        this.consolePrinter = Objects.requireNonNull(consolePrinter, "consolePrinter не должен быть null");
-        this.occurrenceCounter =
-                Objects.requireNonNull(occurrenceCounter, "occurrenceCounter не должен быть null");
-        this.studentInput = Objects.requireNonNull(studentInput, "studentInput не должен быть null");
-        this.saver = Objects.requireNonNull(saver, "saver не должен быть null");
+        this.repository = Objects.requireNonNull(repository, "repository должен бы не null");
+        this.providers = Objects.requireNonNull(providers, "providers должен бы не null");
+        this.sorts = Objects.requireNonNull(sorts, "sorts должен бы не null");
+        this.consolePrinter = Objects.requireNonNull(consolePrinter, "consolePrinter должен бы не null");
+        this.occurrenceCounter = Objects.requireNonNull(occurrenceCounter, "occurrenceCounter должен бы не null");
+        this.studentInput = Objects.requireNonNull(studentInput, "studentInput должен бы не null");
+        this.saver = Objects.requireNonNull(saver, "saver должен бы не null");
     }
 
     public void inputCollection(SourceType sourceType) {
@@ -46,11 +47,13 @@ public class Service {
         if (provider == null) {
             throw new IllegalArgumentException("Неизвестный источник: " + sourceType);
         }
-        repository.addAll(provider.provide());
+        List<Student> students = provider.provide();
+        repository.addAll(students);
     }
 
     public void printCollection() {
-        consolePrinter.printCollection(repository.getCollection());
+        CustomList<Student> collection = repository.getCollection();
+        consolePrinter.printCollection(collection);
     }
 
     public void sortCollection(Field field) {
@@ -58,16 +61,20 @@ public class Service {
         if (sort == null) {
             throw new IllegalArgumentException("Неизвестное поле: " + field);
         }
-        repository.setCollection(sort.sort(repository.getCollection()));
+        CustomList<Student> collection = repository.getCollection();
+        CustomList<Student> sortedCollection = sort.sort(collection);
+        repository.setCollection(sortedCollection);
     }
 
     public void saveToFile() {
-        saver.save(repository.getCollection());
+        CustomList<Student> collection = repository.getCollection();
+        saver.save(collection);
     }
 
     public void countOccurrences() {
         Student target = studentInput.readStudent();
-        int count = occurrenceCounter.count(repository.getCollection(), target);
+        CustomList<Student> collection = repository.getCollection();
+        int count = occurrenceCounter.count(collection, target);
         consolePrinter.printOccurrences(count);
     }
 }
