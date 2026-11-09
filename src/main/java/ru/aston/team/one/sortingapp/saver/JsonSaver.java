@@ -33,7 +33,7 @@ public class JsonSaver implements Saver {
                 allElements = (List<T>) mapper.readValue(path.toFile(), typeReference);
             }
             allElements.addAll(list);
-            mapper.writeValue(path.toFile(), allElements);
+            mapper.writerWithDefaultPrettyPrinter().writeValue(path.toFile(), allElements);
         } catch (IOException e) {
             System.err.println("Ошибка при работе с файлом " + FILE_NAME + ": " + e.getMessage());
             return;
