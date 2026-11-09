@@ -1,9 +1,8 @@
 package ru.aston.team.one.sortingapp.repository;
 
-import ru.aston.team.one.sortingapp.model.Student;
 import ru.aston.team.one.sortingapp.collection.CustomList;
+import ru.aston.team.one.sortingapp.model.Student;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Repository {

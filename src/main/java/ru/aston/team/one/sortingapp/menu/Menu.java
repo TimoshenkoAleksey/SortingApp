@@ -24,7 +24,7 @@ public class Menu {
         while (isRunning) {
             try {
                 printMenu();
-                int choice = input.readInt("Выберите пункт меню");
+                int choice = input.readInt("Выберите пункт меню: ");
                 handleChoice(choice);
             } catch (RuntimeException e) {
                 System.out.println("Ошибка: " + e.getMessage());

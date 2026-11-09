@@ -2,6 +2,7 @@ package ru.aston.team.one.sortingapp.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -25,7 +26,7 @@ public class StudentTest {
 
     @Test
     @DisplayName("Средний балл не может быть отрицательным")
-    void build_shouldThrowException_whenAverageNumberIsNegative(){
+    void build_shouldThrowException_whenAverageNumberIsNegative() {
         assertThrows(IllegalArgumentException.class, () -> new Student.Builder()
                 .groupNumber(6).averageNumber(-0.1).recordBookNumber(4242).build());
     }

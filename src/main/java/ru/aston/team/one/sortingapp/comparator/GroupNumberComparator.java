@@ -1,6 +1,7 @@
 package ru.aston.team.one.sortingapp.comparator;
 
 import ru.aston.team.one.sortingapp.model.Student;
+
 import java.util.Comparator;
 
 public class GroupNumberComparator implements Comparator<Student> {
