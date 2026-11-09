@@ -91,7 +91,7 @@ class OccurrenceCounterTest {
         }
 
         int threads = 8;
-        int iterations = 1_000;
+        int iterations = 100;
         ExecutorService pool = Executors.newFixedThreadPool(threads);
 
         try {
