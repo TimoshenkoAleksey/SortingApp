@@ -1,7 +1,6 @@
 package ru.aston.team.one.sortingapp;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import ru.aston.team.one.sortingapp.repository.Repository;
 import ru.aston.team.one.sortingapp.counter.OccurrenceCounter;
 import ru.aston.team.one.sortingapp.enums.Field;
 import ru.aston.team.one.sortingapp.enums.SourceType;
@@ -13,14 +12,11 @@ import ru.aston.team.one.sortingapp.provider.ConsoleProvider;
 import ru.aston.team.one.sortingapp.provider.FileProvider;
 import ru.aston.team.one.sortingapp.provider.GeneratedProvider;
 import ru.aston.team.one.sortingapp.provider.Provider;
+import ru.aston.team.one.sortingapp.repository.Repository;
 import ru.aston.team.one.sortingapp.saver.JsonSaver;
 import ru.aston.team.one.sortingapp.saver.Saver;
 import ru.aston.team.one.sortingapp.service.Service;
-import ru.aston.team.one.sortingapp.sort.AverageScoreSort;
-import ru.aston.team.one.sortingapp.sort.EvenRecordBookNumberSort;
-import ru.aston.team.one.sortingapp.sort.GroupNumberSort;
-import ru.aston.team.one.sortingapp.sort.RecordBookNumberSort;
-import ru.aston.team.one.sortingapp.sort.Sort;
+import ru.aston.team.one.sortingapp.sort.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -34,7 +30,8 @@ public class Main {
         StudentInput studentInput = new StudentInput(consoleInput);
         Repository repository = new Repository();
 
-        Saver saver = new JsonSaver(new TypeReference<List<?>>() {});
+        Saver saver = new JsonSaver(new TypeReference<List<?>>() {
+        });
 
         OccurrenceCounter occurrenceCounter = new OccurrenceCounter();
 

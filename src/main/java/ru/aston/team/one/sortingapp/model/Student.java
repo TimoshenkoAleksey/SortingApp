@@ -59,7 +59,7 @@ public record Student(int groupNumber, double averageNumber, int recordBookNumbe
         }
 
         public Student build() {
-            return new Student(groupNumber,averageNumber,recordBookNumber);
+            return new Student(groupNumber, averageNumber, recordBookNumber);
         }
     }
 }
